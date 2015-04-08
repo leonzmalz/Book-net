@@ -157,24 +157,25 @@ footer {
 
 /*Tela de Busca */
 
-.painel-busca{
-  height: 290px;
-  width: 290px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  text-align: center;
-  
-}
-.painel-items-busca{
-  height: 50px;
-  text-overflow: ellipsis;
+
+.painel-busca-cabecalho{
+  white-space: nowrap; 
+  width: 13em; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 
-.imagens-busca{
-  height: 150px;
-  width: 100px;
-  margin-left: 60px;
+.painel-busca-imagens{
+  height: 190px;
+  width: 200px;
 }
+
+.painel-busca-caption{
+  text-align: center;
+}
+
+
+
 
 
 
