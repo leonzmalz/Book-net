@@ -166,12 +166,17 @@ footer {
 }
 
 .painel-busca-imagens{
-  height: 190px;
-  width: 200px;
+  width: 150px;
 }
 
 .painel-busca-caption{
   text-align: center;
+}
+
+/* Formulário de Cadastro */
+
+#selectEstado{
+  width: 75px;
 }
 
 

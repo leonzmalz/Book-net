@@ -61,116 +61,115 @@
       </div>
     </nav>
     <main  class="container">
-      <form class="form-horizontal col-md-11" role="CadastroDeUsuario" action="">
+      <form class="form-horizontal" role="CadastroDeUsuario" action="">
           <legend>Novo Usuário</legend>
-          <div class="col-md-6">
-             <div class="form-group">
-                <label for="txtNome" class="col-md-2 control-label">Nome</label>
-                <div class="col-md-10">
-                  <input type="text" class="form-control" id="txtNome" placeholder="Nome Completo" required>
-                </div>
+          <div class="col-md-12 form-group">
+            <div id="divEssencial">
+              <div class="col-md-2">
+                <label for="txtLogin">Login</label>
+                <input type="text" id="txtLogin" required class="form-control">
               </div>
-              <div class="form-group">
-                <label for="selectTipoPessoa" class="col-md-2 control-label">Pessoa</label>
-                <div class="col-md-4">
-                  <select class="form-control" id="selectTipoPessoa">
-                    <option>Física</option>
-                    <option>Jurídica</option>
-                  </select>
-                </div>
+              <div class="col-md-2">
+                <label for="txtSenha">Senha</label>
+                <input type="password" id="txtSenha" required class="form-control">
               </div>
-              <div class="form-group">
-                <label for="txtIdentidade" class="col-md-2 control-label">Identidade</label>
-                <div class="col-md-5">
-                   <input type="text" class="form-control" id="txtIdentidade" placeholder="Identidade" required>
-                </div>
+              <div class="col-md-2">
+                <label for="txtConfirmaSenha">Confirmar Senha</label>
+                <input type="password" id="txtConfirmaSenha" required class="form-control">
               </div>
-              <div class="form-group">
-                <label for="txtCPFCNPJ" class="col-md-2 control-label">CPF/CNPJ</label>
-                <div class="col-md-5">
-                   <input type="text" class="form-control" id="txtCPFCNPJ" placeholder="CPF ou CNPJ" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="txtDataNascimento" class="col-md-2 control-label">Data de Nascimento</label>
-                <div class="col-md-4">
-                   <input type="date" class="form-control" id="txtDataNascimento" placeholder="Nascimento">
-                </div>
-              </div>
-              <div class="form-group">
-              <label for="txtTelefone" class="col-md-2 control-label">Telefone</label>
-              <div class="col-md-4">
-                 <input type="text" class="form-control" id="txtTelefone" placeholder="Telefone">
-              </div>
-              <label for="txtCelular" class="col-md-2 control-label">Celular</label>
-              <div class="col-md-4">
-                 <input type="text" class="form-control" id="txtCelular" placeholder="Celular">
-              </div>
-            </div>
-              
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="txtEndereco" class="col-md-2 control-label">Endereço</label>
-              <div class="col-md-10">
-                 <input type="text" class="form-control" id="txtEndereco" placeholder="Endereço completo" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="txtBairro" class="col-md-2 control-label">Bairro</label>
-              <div class="col-md-4">
-                 <input type="text" class="form-control" id="txtBairro" placeholder="Bairro" required>
-              </div>
-              <label for="txtCidade" class="col-md-2 control-label">Cidade</label>
-              <div class="col-md-4">
-                 <input type="text" class="form-control" id="txtCidade" placeholder="Cidade" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="selectEstado" class="col-md-2 control-label">Estado</label>
-              <div class="col-md-3">
-                  <select class="form-control" id="selectEstado">
-                    <option>AL</option><option>AM</option><option>BA</option><option>CE</option><option>ES</option><option>MA</option>
-                    <option>MG</option><option>MT</option><option>MS</option><option>PA</option><option>PE</option><option>PI</option>
-                    <option>PR</option><option>RO</option><option>RJ</option><option>RS</option><option>SP</option><option>SE</option>
-                    <option>TO</option>
-                  </select>
-              </div>
-              <label for="txtCEP" class="col-md-2  col-md-offset-1 control-label">CEP</label>
-              <div class="col-md-4">
-                 <input type="text" class="form-control" id="txtCEP" placeholder="CEP" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="txtRazaoSocial" class="col-md-2 control-label">Razão Social</label>
-              <div class="col-md-10">
-                 <input type="text" class="form-control" id="txtRazaoSocial" placeholder="Razão Social">
-              </div>
-            </div>
-            <div class="form-group">
-                <label for="txtEmail" class="col-md-2 control-label">Email</label>
-                <div class="col-md-10">
-                   <input type="email" class="form-control" id="txtEmail" placeholder="Email">
-                </div>
-              </div>
-            <div class="form-group">
-              <label for="txtHomePage" class="col-md-2 control-label">HomePage</label>
-              <div class="col-md-10">
-                 <input type="email" class="form-control" id="txtHomePage" placeholder="HomePage">
-              </div>
-            </div>
-             
-             
-          </div>
+              <div class="col-md-2">
+                <label for="selectTipoPessoa">Tipo de Pessoa</label>
+                <select class="form-control" id="selectTipoPessoa">
+                  <option value="fisica">Física</option>
+                  <option value="juridica">Jurídica</option>
+                </select>
 
-        <div class="form-group col-md-7" >
+              </div>
+            </div>
+          </div>
+         
+          <div id="divClienteFisico" class="col-md-12 form-group">
+            <div class="col-md-4">
+              <label for="txtNome">Nome</label>
+              <input type="text" class="form-control" id="txtNome"required>
+            </div>
+            <div class="col-md-2">
+              <label for="txtCPF">CPF</label>
+              <input type="text" class="form-control" id="txtCPF" required>
+            </div>
+            <div class="col-md-2">
+              <label for="txtIdentidade">Identidade</label>
+              <input type="text" class="form-control" id="txtIdentidade" required>
+            </div>
+            <div class="col-md-2">
+              <label for="txtDataNascimento">Data de Nasc.</label>
+              <input type="date" class="form-control" id="txtDataNascimento">
+            </div>
+             
+          </div>
+          <div id="divClienteJuridico" class="col-md-12 form-group">
+            <div class="col-md-4">
+              <label for="txtRazaoSocial">Razão Social</label>
+              <input type="text" class="form-control" id="txtRazaoSocial" required>
+            </div>
+            <div class="col-md-2">
+              <label for="txtCNPJ">CNPJ</label>
+              <input type="text" class="form-control" id="txtCNPJ" required>
+            </div>
+            
+          </div>
+          <div class="col-md-12 form-group" id="divExtras">
+            <div class="col-md-4">
+              <label for="txtEndereco">Endereço</label>
+              <input type="text" class="form-control" id="txtEndereco"  required>
+            </div>
+            <div class="col-md-2">
+              <label for="txtBairro">Bairro</label>
+              <input type="text" class="form-control" id="txtBairro"  required>
+            </div>
+            <div class="col-md-2">
+              <label for="txtCidade">Cidade</label>
+              <input type="text" class="form-control" id="txtCidade" required>
+            </div>
+             <div class="col-md-1">
+               <label for="selectEstado">Estado</label>
+               <select class="form-control" id="selectEstado">
+                  <option>AL</option><option>AM</option><option>BA</option><option>CE</option><option>ES</option><option>MA</option>
+                  <option>MG</option><option>MT</option><option>MS</option><option>PA</option><option>PE</option><option>PI</option>
+                  <option>PR</option><option>RO</option><option>RJ</option><option>RS</option><option>SP</option><option>SE</option>
+                  <option>TO</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+              <label for="txtCEP">CEP</label>
+              <input type="text" class="form-control" id="txtCEP"  required>
+            </div>
+            <div class="col-md-4">
+              <label for="txtEmail">Email</label> 
+              <input type="email" class="form-control" id="txtEmail" > 
+            </div>
+            <div class="col-md-4">
+              <label for="txtHomePage">HomePage</label>
+              <input type="email" class="form-control" id="txtHomePage">
+            </div>
+           
+            <div class="col-md-2">
+              <label for="txtTelefone">Telefone</label>
+              <input type="text" class="form-control" id="txtTelefone" required>
+            </div>
+            <div class="col-md-2">
+              <label for="txtCelular">Celular</label>
+              <input type="text" class="form-control" id="txtCelular">
+            </div>
+          </div>          
+        <div class="col-md-5">
             <button type="submit" class="btn btn-success">Cadastrar</button>
             <button type="reset" class="btn btn-danger">Cancelar</button>
         </div>
       </form>
     </main>
 
-      <hr>
+
       <footer>
           <div class="row">
               <div class="col-md-3">
@@ -182,9 +181,38 @@
 
     <script src="../js/jquery-1.11.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/tooltip.js"></script> 
+
+    <script>
+      $(function(){
+        $('#divClienteJuridico').hide(); //Esconde a div do cliente Jurídico
+        $('#selectTipoPessoa').val('fisica');
+
+        //De acordo com a opção de cliente selecionada, exibe as informações necessárias para aquela opção
+        $('#selectTipoPessoa').change(function(){
+          if ($('#selectTipoPessoa').val() == "fisica"){
+            $('#divClienteJuridico').hide("slow");
+            $('#divClienteFisico').show("slow");
+          }else{
+            $('#divClienteFisico').hide("slow");
+            $('#divClienteJuridico').show("slow");
+          }
+
+        });
+        //Validação do confirma senha
+        $('#txtConfirmaSenha').blur(function(){
+          if($('#txtSenha').val() != $('#txtConfirmaSenha').val()){ 
+            //Aqui estou dando o focus no componente. Está dentro de um timeout para funciona no firefox
+            setTimeout(function() {$('#txtSenha').focus();}, 0); 
+            //Cria um tooltip no componente passado por parâmetro
+            createTooltip('#txtSenha','Senhas não conferem'); 
+            
+          }
+        });
+      });
+    </script>
     </body>
 
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+
 	
