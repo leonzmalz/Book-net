@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" >
     
+
  	
 </head>
 
@@ -27,7 +28,7 @@
             <li class="dropdown">
               <button class="btn btn-danger dropdown-toggle botao-categorias" data-toggle="dropdown">Categorias<span class="caret" role="button" aria-expanded="false"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="buscarProduto.html">Ação</a></li>
+                  <li><a href="buscarProduto.php">Ação</a></li>
                   <li><a href="#">Aventura</a></li>
                   <li><a href="#">Culinária</a></li>
                   <li><a href="#">Romance</a></li>
@@ -36,7 +37,7 @@
               </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Cadastre-se</a></li>
+            <li><a href="cadastrarUsuario.php">Cadastre-se</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false">Login<span class="caret"></span></a>
             <div class="dropdown-menu menuLogin" role="menu">
@@ -60,38 +61,4 @@
         </div>
       </div>
     </nav>
-    <main  class="container">
-    <div class="col-md-6">
-      <form class="form-horiziontal" action="" method="post" role="CadastroDeCategorias">
-      <legend>Nova Categoria</legend>
-      <div class=" col-md-8 form-group">
-        <label for="txtCategoria">Nome</label>
-        <input type="text" id="txtCategoria" class="form-control" required> 
-      </div>
-      <div class="col-md-5">
-            <button type="submit" class="btn btn-success">Cadastrar</button>
-            <button type="reset" class="btn btn-danger">Cancelar</button>
-       </div>  
 
-    </form>
-    </div>
-    
-    </main>
-
-    <footer>
-        <div class="row">
-            <div class="col-md-3">
-                <p>Copyright &copy; Book.Net 2015</p>
-            </div>
-        </div>
-    </footer>
-
-
-    <script src="../js/jquery-1.11.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    
-    </body>
-
-</html>
-
-	
