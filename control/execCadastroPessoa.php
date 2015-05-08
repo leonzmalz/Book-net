@@ -19,29 +19,35 @@
     	$pessoa->setCnpj( $_POST['txtCNPJ']);
     }
 
-    if(UsuarioDAO::InsereValores($pessoa->getUsuario())){
-    	$pessoa->setEndereco($_POST['txtEndereco'].', '.$_POST['txtBairro'].', '.$_POST['txtCidade'].', '.$_POST['selectEstado'].', '.$_POST['txtCEP']);
-	    $pessoa->setTelefone($_POST['txtTelefone']);
-	    $pessoa->setCelular($_POST['txtCelular']);
-	    $pessoa->setEmail($_POST['txtEmail']);
-	 	$pessoa->setHomePage($_POST['txtHomePage']);
+    if(UsuarioDAO::ValidarUsuario($pessoa->getUsuario())){
+    	if(UsuarioDAO::InsereValores($pessoa->getUsuario())){
+	    	$pessoa->setEndereco($_POST['txtEndereco'].', '.$_POST['txtBairro'].', '.$_POST['txtCidade'].', '.$_POST['selectEstado'].', '.$_POST['txtCEP']);
+		    $pessoa->setTelefone($_POST['txtTelefone']);
+		    $pessoa->setCelular($_POST['txtCelular']);
+		    $pessoa->setEmail($_POST['txtEmail']);
+		 	$pessoa->setHomePage($_POST['txtHomePage']);
 
-	 	if($tipoPessoa == 'fisica')
-	 		$inseriu = PessoaFisicaDAO::InsereValores($pessoa);
-	 	else
-            $inseriu = PessoaJuridicaDAO::InsereValores($pessoa);
-	 	
-	 	if($inseriu){
-	 		?> <p class="alert alert-success">Usuário criado</p> <?php
-	 	}
-	 	else{
-	 		?> <p class="alert alert-danger">Erro ao criar pessoa</p> <?php
-	 	}
+		 	if($tipoPessoa == 'fisica')
+		 		$inseriu = PessoaFisicaDAO::InsereValores($pessoa);
+		 	else
+	            $inseriu = PessoaJuridicaDAO::InsereValores($pessoa);
+		 	
+		 	if($inseriu){
+		 		?> <p class="alert alert-success alertas">Usuário criado</p> <?php
+		 	}
+		 	else{
+		 		?> <p class="alert alert-danger alertas">Erro ao criar pessoa</p> <?php
+		 	}
+
+	    }else{
+	    	?> <p class="alert alert-danger alertas">Erro ao criar usuário</p> <?php
+	    	
+	    }
 
     }else{
-    	?> <p class="alert alert-danger">Erro ao criar usuário</p> <?php
-    	
+    	?> <p class="alert alert-danger alertas">Usuário já existe</p> <?php
     }
+    
 
  	include("../view/rodape.php");
     

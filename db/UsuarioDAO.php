@@ -5,9 +5,10 @@
 
 	class UsuarioDAO extends Conexao implements DAO{
 
+
 		public  static function InsereValores($obj){
 		    $pdo = parent::getDB();
-	        $insert = $pdo->prepare("INSERT INTO usuarios(user,senha) values (?,?)");
+	    	$insert = $pdo->prepare("INSERT INTO usuarios(user,senha) values (?,?)");
 	        $insert->bindValue(1, $obj->getUser());
 	        $insert->bindValue(2, $obj->getSenha());
             if ($insert->execute()){
@@ -17,6 +18,8 @@
             
             else
                 return false;
+
+	        
         }       
 
 
@@ -46,6 +49,19 @@
 
 
   		}
+  		public static function ValidarUsuario($obj){
+	        $pdo = parent ::getDB();
+	        $select = $pdo->prepare("SELECT * FROM usuarios WHERE user = ?");
+	        $select->bindValue(1,$obj->getUser());
+	        $select->execute();
+
+	        if (count($select->fetchAll(PDO::FETCH_ASSOC)) > 0) //Se existe registros, retorno false
+	            return false;
+	        else
+	            return true;
+      }
+
+  		
 	}
 
 ?>

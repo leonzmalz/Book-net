@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Abr 22, 2015 as 02:46 PM
+-- Tempo de Geração: Mai 08, 2015 as 07:16 PM
 -- Versão do Servidor: 5.5.8
 -- Versão do PHP: 5.3.5
 
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `negociacoes` (
 --
 
 CREATE TABLE IF NOT EXISTS `pessoa_fisica` (
-  `idPessoa_Fisica` int(11) NOT NULL AUTO_INCREMENT,
+  `idPessoaFisica` int(11) NOT NULL AUTO_INCREMENT,
   `idUsuario` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `identidade` varchar(20) DEFAULT NULL,
@@ -179,14 +179,19 @@ CREATE TABLE IF NOT EXISTS `pessoa_fisica` (
   `celular` varchar(15) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `homePage` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`idPessoa_Fisica`),
+  PRIMARY KEY (`idPessoaFisica`),
   KEY `fk_Pessoa_Fisica_Usuarios1_idx` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `pessoa_fisica`
 --
 
+INSERT INTO `pessoa_fisica` (`idPessoaFisica`, `idUsuario`, `nome`, `identidade`, `cpf`, `dataNascimento`, `endereco`, `telefone`, `celular`, `email`, `homePage`) VALUES
+(1, 19, 'leo', '89898989', '11111111', '2015-05-15', 'Rua ', '123', '321', 'leo@leo', 'leo'),
+(2, 20, 'leo', '89898989', '11111111', '2015-05-15', 'Rua ', '123', '321', 'leo@leo', 'leo'),
+(3, 24, 'teste', 'teste', 'teste', '2015-05-08', 'teste, teste, teste, , teste', 't', 't', 'teste@teste', 't'),
+(4, 25, 'teste', 'teste', 'teste', '2015-05-08', 'teste, teste, teste, AL, teste', 't', 't', 'teste@teste', 't');
 
 -- --------------------------------------------------------
 
@@ -195,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `pessoa_fisica` (
 --
 
 CREATE TABLE IF NOT EXISTS `pessoa_juridica` (
-  `idPessoa_Juridica` int(11) NOT NULL AUTO_INCREMENT,
+  `idPessoaJuridica` int(11) NOT NULL AUTO_INCREMENT,
   `idUsuario` int(11) NOT NULL,
   `CNPJ` varchar(20) NOT NULL,
   `razaoSocial` varchar(100) NOT NULL,
@@ -204,14 +209,16 @@ CREATE TABLE IF NOT EXISTS `pessoa_juridica` (
   `celular` varchar(15) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `homePage` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`idPessoa_Juridica`),
+  PRIMARY KEY (`idPessoaJuridica`),
   KEY `fk_Pessoa_Juridica_Usuarios1_idx` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `pessoa_juridica`
 --
 
+INSERT INTO `pessoa_juridica` (`idPessoaJuridica`, `idUsuario`, `CNPJ`, `razaoSocial`, `endereco`, `telefone`, `celular`, `email`, `homePage`) VALUES
+(1, 23, 'jur', 'jur', 'jur', '123', '123', 'jur@jur', 'jur');
 
 -- --------------------------------------------------------
 
@@ -241,15 +248,24 @@ CREATE TABLE IF NOT EXISTS `reservas` (
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(45) NOT NULL,
+  `user` varchar(45) NOT NULL,
   `senha` varchar(60) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
+INSERT INTO `usuarios` (`idUsuario`, `user`, `senha`) VALUES
+(11, 'a', '$2a$08$MjAyOTg5MjU1MTU1NGNlMemJkLjCS9Nx.rfwR9anSZRCadE51O3we'),
+(19, 'leo', '$2a$08$OTYwNjM5ODYwNTU0Y2Y5OOF.gahyQfBCZxpuJR.JS1eKk9pvCnXLe'),
+(20, 'leo', '$2a$08$NTg0NDUzMzk3NTU0Y2Y5YO54dNtwRzNNn09J47EQujL9a6bVCEe5m'),
+(21, 'jur', '$2a$08$MjA4OTI2NDczOTU1NGNmYuRt87JvEdvC8T/qPKdQEdKG3qyFErObm'),
+(22, 'jur', '$2a$08$ODI3OTIxNzA4NTU0Y2ZkO.RKG/nkbQVtwssWRoNSGVIvvHmdtHK.a'),
+(23, 'jur', '$2a$08$MzUzNzk0OTEyNTU0Y2ZkYOryPlFYbs8nwXr3KXkbTLJjc8aLPSona'),
+(24, 'teste', '$2a$08$MTU0MzMwNjI0MzU1NGNmZO8fH2wK./vrVePhGCxaka0Acc0AJne7e'),
+(25, 'teste', '$2a$08$NDEwNjE0NzYxNTU0Y2ZlNOyzu.foL/0o5DDnkTZwdDIQ6oUlF.4KO');
 
 --
 -- Restrições para as tabelas dumpadas
