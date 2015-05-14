@@ -11,9 +11,10 @@ require_once("Usuario.php");
 
 		public function __construct($user,$senha){
 			$this->Usuario = new Usuario;
-			$this->Usuario->setUser($user);
-			$this->Usuario->setSenha($senha);
-		}
+			$this->Usuario->setUser($user); 
+			$this->Usuario->setSenha($senha,true); //Aqui sempre passo como true, sempre vai ser criptografado
+            $this->Usuario->setTipo("PESSOA");		
+        }
 		public function getId() {
         	return $this->id;
     	}

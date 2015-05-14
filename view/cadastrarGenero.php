@@ -13,11 +13,12 @@
 ?>
     <main  class="container">
       <div class="col-md-6">
+        <?php if (isset($_GET['alerta'])){} ?>
         <form class="form-vertical" action="../control/execGenero.php" method="post" role="CadastroDeCategorias" name="formGenero" id="formGenero">
         <legend>Novo Gênero</legend>
         <div class="col-md-3 form-group">
           <label for="txtId">Id</label>
-          <input type="text" id="txtId" name="txtId" class="form-control"> 
+          <input type="text" id="txtId" name="txtId" class="form-control" disabled> 
         
         </div>
         <div class=" col-md-10 form-group">
@@ -55,11 +56,12 @@
 $(function(){
 
  $('#selectGeneros').change(function() {
-      var id = $('#selectGeneros').val(); 
-      var text = $('#selectGeneros option:selected').text(); 
-      $('#txtNome').val(text);
-      $('#txtId').prop('disabled','true');
-      $('#txtNome').prop('disabled','true');
+    var id = $('#selectGeneros').val(); 
+    var text = $('#selectGeneros option:selected').text(); 
+    $('#txtNome').val(text);
+    $('#txtId').val(id);
+    $('#txtId').prop('disabled','true');
+    $('#txtNome').prop('disabled','true');
 
   });
   $('#btnNovo').click(function(){
@@ -68,21 +70,21 @@ $(function(){
   });
 
   $('#btnAlterar').click(function(){
-      $('#txtNome').prop('disabled','');
-      $('#btnOk').val('Alterar');    
-      $('#txtNome').focus();
-      $('#tipoOperacao').val('A');
+    $('#txtNome').prop('disabled','');
+    $('#btnOk').val('Alterar');    
+    $('#txtNome').focus();
+    $('#tipoOperacao').val('A');
   });
 
   $('#btnRemover').click(function(){
     $('#tipoOperacao').val('E');
-    $('#txtNome').prop('disabled','');
-    $('#txtId').prop('disabled','');
     $('#formGenero').submit();  
     
   });
-
-
+  $('#formGenero').submit(function(){
+    $('#txtId').prop('disabled','');
+    $('#txtNome').prop('disabled','');
+  });
 
 
 });

@@ -13,6 +13,7 @@
     	$pessoa->setCPF($_POST['txtCPF']);
     	$pessoa->setIdentidade($_POST['txtIdentidade']);
     	$pessoa->setDataNascimento($_POST['txtDataNascimento']);
+    
     }else{
 		$pessoa  = new PessoaJuridica($_POST['txtUser'],$_POST['txtSenha']);
     	$pessoa->setRazaoSocial($_POST['txtRazaoSocial']);

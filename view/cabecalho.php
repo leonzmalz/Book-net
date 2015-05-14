@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once("../control/Login.php");
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -6,9 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/bootstrap.min.css" >
     <link rel="stylesheet" type="text/css" media="screen" href="../css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" >
-    
 
- 	
 </head>
 
 <body>
@@ -22,7 +25,12 @@
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Buscar Livro" id="inputBusca">
             </div>
+            <?php
+
+            ?>
+
             <button class="btn btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            <a href="cadastrarGenero.php" class="btn btn-danger">Cadastrar Gênero</a>
           </form>
           <ul class="nav navbar-nav navbar-left">
             <li class="dropdown">
@@ -36,19 +44,23 @@
                </ul>
               </li>
           </ul>
+          
           <ul class="nav navbar-nav navbar-right">
+          <?php
+               if (!Login::isLogado()) { 
+          ?>
             <li><a href="cadastrarUsuario.php">Cadastre-se</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false">Login<span class="caret"></span></a>
             <div class="dropdown-menu menuLogin" role="menu">
-              <form role="form" class="form-horizontal" method="post" action="control/execLogin.php">
+              <form role="form" class="form-horizontal" method="post" action="execLogin.php">
               <div class="form-group">
-                  <label for="txtlogin">Login</label>
-                  <input type="text" id="txtlogin" name="txtlogin" class="form-control" required=""/>
+                  <label for="txtUser">User</label>
+                  <input type="text" id="txtUser" name="txtlogin" class="form-control" required=""/>
               </div>
               <div class="form-group">
-                  <label for="txtsenha">Senha</label>
-                  <input type="password" id="txtsenha" name="txtsenha" class="form-control" required=""/>
+                  <label for="txtSenha">Senha</label>
+                  <input type="password" id="txtSenha" name="txtsenha" class="form-control" required=""/>
               </div>
               <div class="form-group">
                   <button type="submit" class="btn btn-success">Entrar</button>
@@ -57,7 +69,17 @@
               </form>
              </div>
             </li>
+          <?php
+              }else{
+
+          ?> 
+             <li><a href="#"><?= $_SESSION['user'] ?></a></li>  
+          <?php   
+           }
+          ?>
+
           </ul>
+          
         </div>
       </div>
     </nav>

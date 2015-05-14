@@ -8,6 +8,7 @@ class Usuario
 	private $id;
 	private $user;
 	private $senha;
+	private $tipo;
 
 	public function getId() {
         return $this->id;
@@ -24,10 +25,18 @@ class Usuario
 	public function getSenha() {
         return $this->senha;
 	}
-	public function setSenha($value){
-		$hash = Bcrypt::hash($value); //Faço a criptografia 
-		$this->senha = $hash;
+	public function setSenha($value, $isCript){
+		if ($isCript)
+		    $value = Bcrypt::hash($value); //Faço a criptografia 
+		$this->senha = $value;
 	}
+	public function getTipo() {
+        return $this->tipo;
+	}
+	public function setTipo($value){
+		$this->tipo = $value;
+	}
+
 	
 
 
