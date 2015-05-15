@@ -1,5 +1,6 @@
 <?php
-require_once("../util/bcrypt.php");
+require_once (realpath(dirname(__FILE__) . '/../util/bcrypt.php'));
+
 /**
 * 
 */

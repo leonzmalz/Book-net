@@ -1,7 +1,7 @@
 <?php
-require_once ('../db/Conexao.php');
-require_once ("../util/bcrypt.php");
-require_once ("../db/UsuarioDAO.php");
+require_once (realpath(dirname(__FILE__) . '/../db/Conexao.php'));
+require_once (realpath(dirname(__FILE__) . '/../util/bcrypt.php'));
+require_once (realpath(dirname(__FILE__) . '/../db/UsuarioDAO.php'));
 
 class Login extends Conexao {
 
@@ -9,14 +9,14 @@ class Login extends Conexao {
     public static function logar($usuario) {
         $usuarioBD = UsuarioDAO::getUsuarioByLogin($usuario);
         //se existe esse usuario
-        if ($logar->rowCount() == 1) {
+        if ($usuarioBD->getId() != null) {
             $senhaDigitada = $usuario->getSenha();
             $senhaBanco = $usuarioBD->getSenha();
             if (Bcrypt::check($senhaDigitada, $senhaBanco)) {
-                $_SESSION['id_usuario'] = $dados->idUsuario;
-                $_SESSION['user'] = $dados->user;
+                $_SESSION['id_usuario'] = $usuarioBD->getId();
+                $_SESSION['user'] = $usuarioBD->getUser();
                 $_SESSION['logado'] = true;
-                $_SESSION['tipo_usuario'] = $dados->tipo;
+                $_SESSION['tipo_usuario'] = $usuarioBD->getTipo();
                 return true;
             } else {
                 $_SESSION['erro_login'] = 'Senha incorreta';
@@ -49,7 +49,6 @@ class Login extends Conexao {
         if (isset($_SESSION['logado'])) {
             unset($_SESSION['logado']);
             session_destroy();
-            header('Location:../index.html');
         }
     }
 
@@ -58,6 +57,14 @@ class Login extends Conexao {
             return true;
         else
             return false;
+    }
+
+    public static function userLogado(){
+        return $_SESSION['user'];
+    }
+
+    public static function tipoUserLogado(){
+        return $_SESSION['tipo_usuario'];
     }
 
 }

@@ -1,5 +1,5 @@
 <?php
-	require_once("../model/usuario.php");
+require_once (realpath(dirname(__FILE__) . '/../model/usuario.php'));
 	require_once("Conexao.php");
 	require_once("DAO.php");
 
@@ -68,7 +68,7 @@
 	        $registro = $select->fetch(PDO::FETCH_ASSOC);
           
             $obj = new Usuario;
-            $obj->setIdUsuario($registro['idUsuario']);
+            $obj->setId($registro['idUsuario']);
             $obj->setUser($registro['user']);
             $obj->setSenha($registro['senha'],false); //Já vem criptografada do banco, por isso passo false
             $obj->setTipo($registro['tipo']);

@@ -1,19 +1,13 @@
 <?php include("cabecalho.php");
-      require_once("../db/GeneroDAO.php"); 
-
-      function reload_lista(){
-        $generos = GeneroDAO::getValores();
-
-        foreach($generos as $registro){
-          echo "<option value ='".$registro->getId()."''>".$registro->getNome()."</option>";
-        }
-    }
+      require_once("../db/GeneroDAO.php");
+      require_once("../control/carregarGeneros.php"); 
+      if(Login::isLogado()){
+        if(Login::tipoUserLogado() == "ADMIN"){
 
 
 ?>
     <main  class="container">
       <div class="col-md-6">
-        <?php if (isset($_GET['alerta'])){} ?>
         <form class="form-vertical" action="../control/execGenero.php" method="post" role="CadastroDeCategorias" name="formGenero" id="formGenero">
         <legend>Novo Gênero</legend>
         <div class="col-md-3 form-group">
@@ -36,7 +30,7 @@
       <div class="col-md-5 col-md-offset-1">
         <legend>Lista de Gêneros</legend>
         <select size="15" id="selectGeneros" name="selectGeneros" class="form-control">
-          <?php reload_lista(); ?>
+          <?php exibirGeneros(); ?>
          </select>
          <br>
             <button id="btnNovo"    name = "btnNovo" class="btn btn-success" >Nova Categoria</button>
@@ -48,7 +42,24 @@
     
     </main>
 
-<?php include("rodape.php"); ?>
+<?php 
+    }else{ #Se não é admin logado ?>
+      <div class="alert alert-danger alert-dismissible alertas" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Usuário sem permissão</strong> 
+      </div>
+   <?php }
+
+}else{ #Se não existe usuário logado ?>
+     <div class="alert alert-danger alert-dismissible alertas" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Não existe usuário logado</strong> 
+     </div>
+
+<?php }  
+     
+
+include("rodape.php"); ?>
 
 <script type="text/javascript" src="..js/tooltip.js"></script>
 <script>

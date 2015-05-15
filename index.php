@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once("control/Login.php");
+require_once("control/carregarGeneros.php");
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -22,35 +28,33 @@
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Buscar Livro" id="inputBusca">
             </div>
-            <button class="btn btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-            <a href="view/cadastrarGenero.php" class="btn btn-danger">Cadastrar Gênero</a>
-          </form>
+            </form>
           <ul class="nav navbar-nav navbar-left">
             <li class="dropdown">
               <button class="btn btn-danger dropdown-toggle botao-categorias" data-toggle="dropdown">Categorias<span class="caret" role="button" aria-expanded="false"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="view/buscarProduto.php">Ação</a></li>
-                  <li><a href="#">Aventura</a></li>
-                  <li><a href="#">Culinária</a></li>
-                  <li><a href="#">Romance</a></li>
-                  <li><a href="#">Suspense</a></li>
+                    <?php exibirGenerosLista(); ?>
                </ul>
               </li>
           </ul>
            
           <ul class="nav navbar-nav navbar-right">
+          <?php
+               if (!Login::isLogado()) { 
+
+          ?>
             <li><a href="view/cadastrarUsuario.php">Cadastre-se</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false">Login<span class="caret"></span></a>
             <div class="dropdown-menu menuLogin" role="menu">
               <form role="form" class="form-horizontal" method="post" action="control/execLogin.php">
               <div class="form-group">
-                  <label for="txtlogin">Login</label>
-                  <input type="text" id="txtlogin" name="txtlogin" class="form-control" required=""/>
+                  <label for="txtUser">Login</label>
+                  <input type="text" id="txtUser" name="txtUser" class="form-control" required=""/>
               </div>
               <div class="form-group">
                   <label for="txtsenha">Senha</label>
-                  <input type="password" id="txtsenha" name="txtsenha" class="form-control" required=""/>
+                  <input type="password" id="txtsenha" name="txtSenha" class="form-control" required=""/>
               </div>
               <div class="form-group">
                   <button type="submit" class="btn btn-success">Entrar</button>
@@ -59,11 +63,26 @@
               </form>
              </div>
             </li>
+            <?php
+              }else{
+
+            ?>
+
+             <li><a class="btn btn" href="control/execLogoff.php"> <?php echo Login::userLogado() ?> - Logoff</a></li>  
+            <?php   
+              }
+            ?>
           </ul>
         </div>
       </div>
     </nav>
     <main  class="container">
+    <?php if(isset($_SESSION['erro_login'])){ ?>
+        <div class="alert alert-warning alert-dismissible alertas" role="alert">
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <strong><?php echo($_SESSION['erro_login']); ?></strong>
+        </div>
+    <?php } ?>    
     <div class="row">
       <div id="carousel" class="col-md-12">
       	<div id="wowslider-container0">

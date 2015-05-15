@@ -1,5 +1,5 @@
 <?php
-    require_once("../model/Genero.php");
+    require_once (realpath(dirname(__FILE__) . '/../model/Genero.php'));
     require_once("Conexao.php");
     require_once("DAO.php");
 
@@ -38,7 +38,7 @@
 
   		}
   		#Retorna um array de objetos com os valores do banco
-  		public static function getValores(){
+  		public static function getGeneros(){
 
   			$pdo = parent::getDB();
   			$select = $pdo->query("SELECT * FROM generos ORDER BY nome");
