@@ -31,7 +31,7 @@ require_once("../control/carregarGeneros.php");
           </form>
           <ul class="nav navbar-nav navbar-left">
             <li class="dropdown">
-              <button class="btn btn-danger dropdown-toggle botao-categorias" data-toggle="dropdown">Categorias<span class="caret" role="button" aria-expanded="false"></span></button>
+              <button class="btn btn-danger dropdown-toggle botao-nav" data-toggle="dropdown">Categorias<span class="caret" role="button" aria-expanded="false"></span></button>
                 <ul class="dropdown-menu" role="menu">
                   <?php exibirGenerosLista(); ?>
                </ul>
@@ -66,8 +66,9 @@ require_once("../control/carregarGeneros.php");
               }else{
 
           ?> 
-      
-              <li><a class="btn btn" href="../control/execLogoff.php"> <?php echo Login::userLogado() ?> - Logoff</a></li>   
+              <li><a href="logado.php">Painel de Controle</a></li>
+              <li><a href="../control/execLogoff.php"> <?php echo Login::userLogado() ?> - Logoff</a></li>
+
           <?php   
            }
           ?>

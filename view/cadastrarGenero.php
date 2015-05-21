@@ -8,14 +8,14 @@
 ?>
     <main  class="container">
       <div class="col-md-6">
-        <form class="form-vertical" action="../control/execGenero.php" method="post" role="CadastroDeCategorias" name="formGenero" id="formGenero">
+        <form class="form-vertical" action="../control/execGenero.php" method="post" role="CadastroDeGeneros" name="formGenero" id="formGenero">
         <legend>Novo Gênero</legend>
         <div class="col-md-3 form-group">
           <label for="txtId">Id</label>
           <input type="text" id="txtId" name="txtId" class="form-control" disabled> 
         
         </div>
-        <div class=" col-md-10 form-group">
+        <div class="col-md-10 form-group">
           <label for="txtNome">Nome</label>
           <input type="text" id="txtNome" name="txtNome" class="form-control" required> 
         </div>
@@ -33,7 +33,7 @@
           <?php exibirGeneros(); ?>
          </select>
          <br>
-            <button id="btnNovo"    name = "btnNovo" class="btn btn-success" >Nova Categoria</button>
+            <button id="btnNovo"    name = "btnNovo" class="btn btn-success" >Novo</button>
             <button id="btnAlterar" name = "btnAlterar" class="btn btn-warning" >Alterar</button>
             <button id="btnRemover" name = "btnRemover" class="btn btn-danger">Remover</button>
             

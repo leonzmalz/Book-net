@@ -31,7 +31,7 @@ require_once("control/carregarGeneros.php");
             </form>
           <ul class="nav navbar-nav navbar-left">
             <li class="dropdown">
-              <button class="btn btn-danger dropdown-toggle botao-categorias" data-toggle="dropdown">Categorias<span class="caret" role="button" aria-expanded="false"></span></button>
+              <button class="btn btn-danger dropdown-toggle botao-nav" data-toggle="dropdown">Categorias<span class="caret" role="button" aria-expanded="false"></span></button>
                 <ul class="dropdown-menu" role="menu">
                     <?php exibirGenerosLista(); ?>
                </ul>
@@ -78,11 +78,13 @@ require_once("control/carregarGeneros.php");
     </nav>
     <main  class="container">
     <?php if(isset($_SESSION['erro_login'])){ ?>
-        <div class="alert alert-warning alert-dismissible alertas" role="alert">
+        <div class="alert alert-danger alert-dismissible alertas" role="alert">
            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <strong><?php echo($_SESSION['erro_login']); ?></strong>
         </div>
-    <?php } ?>    
+    <?php 
+          unset($_SESSION['erro_login']);
+          } ?>    
     <div class="row">
       <div id="carousel" class="col-md-12">
       	<div id="wowslider-container0">

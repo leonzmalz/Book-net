@@ -23,6 +23,7 @@
 	   	<?php 
 	   		if(Login::tipoUserLogado() == "ADMIN"){ #Opções de administrador
 		 		echo "<a href='cadastrarGenero.php' class='btn btn-danger'>Cadastrar Gênero</a>";
+		 		echo "<a href='cadastrarLivro.php' class='btn btn-warning'>Cadastrar Livro</a>";
 	 		}
 	 		else{ #Opções de cliente
 	 			echo "<a href='veriricarPedidos.php' class='btn btn-danger'>Verificar Pedidos</a>";

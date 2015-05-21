@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Mai 08, 2015 as 10:58 PM
+-- Tempo de Geração: Mai 15, 2015 as 10:19 PM
 -- Versão do Servidor: 5.5.8
 -- Versão do PHP: 5.3.5
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `generos` (
   `idGenero` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`idGenero`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Extraindo dados da tabela `generos`
@@ -58,7 +58,9 @@ CREATE TABLE IF NOT EXISTS `generos` (
 
 INSERT INTO `generos` (`idGenero`, `nome`) VALUES
 (15, 'Aventura'),
-(21, 'Suspense');
+(22, 'Auto-ajuda'),
+(23, 'Culinária'),
+(24, 'Leo');
 
 -- --------------------------------------------------------
 
@@ -78,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `livros` (
   `nacionalidade` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idLivro`),
   KEY `fk_Livro_Categoria1_idx` (`idCategoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `livros`
@@ -101,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `livros_valores` (
   `multa` decimal(5,3) DEFAULT NULL,
   PRIMARY KEY (`idLivro_Valores`),
   KEY `fk_Livro_Valores_Livro1_idx` (`idLivro`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `livros_valores`
@@ -149,14 +151,14 @@ CREATE TABLE IF NOT EXISTS `pessoa_fisica` (
   `homePage` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idPessoaFisica`),
   KEY `fk_Pessoa_Fisica_Usuarios1_idx` (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `pessoa_fisica`
 --
 
 INSERT INTO `pessoa_fisica` (`idPessoaFisica`, `idUsuario`, `nome`, `identidade`, `cpf`, `dataNascimento`, `endereco`, `telefone`, `celular`, `email`, `homePage`) VALUES
-(5, 26, 'leo', '312312312', '12312321312', '0000-00-00', 'rua, cohatrac, sao luis, MA, 650500', '9898798', '128731888767', 'leonardo@hotmail.com', 'leonardo');
+(1, 1, 'Leonardo', '111111111', '05148021381', '0000-00-00', 'Rua 15, Quadra 26, Cohatrac IV, São Luis, MA, 65054460', '9999999', '999999999', 'leonardo_pinheiro12@hotmail.com', 'leonardo');
 
 -- --------------------------------------------------------
 
@@ -182,6 +184,8 @@ CREATE TABLE IF NOT EXISTS `pessoa_juridica` (
 -- Extraindo dados da tabela `pessoa_juridica`
 --
 
+INSERT INTO `pessoa_juridica` (`idPessoaJuridica`, `idUsuario`, `CNPJ`, `razaoSocial`, `endereco`, `telefone`, `celular`, `email`, `homePage`) VALUES
+(1, 2, '1231231', 'teste', 'teste, teste, teste, MG, 1231231', '123123', '21312321', 'teste@teste.com', 'teste');
 
 -- --------------------------------------------------------
 
@@ -213,15 +217,17 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(45) NOT NULL,
   `senha` varchar(60) NOT NULL,
+  `tipo` varchar(10) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `user`, `senha`) VALUES
-(26, 'leo', '$2a$08$MTQwNDE5MzIwODU1NGQzZOqRHe6EOtgTxb9VKGiBQXsHXwJEUv2Je');
+INSERT INTO `usuarios` (`idUsuario`, `user`, `senha`, `tipo`) VALUES
+(1, 'leo', '$2a$08$NDc3MTU3NjA1NTU1NWYwYu0Wrko30qj8gG06msw6tvHk7L8Ut.Hwe', 'ADMIN'),
+(2, 'teste', '$2a$08$MzYwNDEyODIxNTU1NjEwYOUC4oTEcOeQ8JmT1/vRG3hfOmbPT6hDi', 'PESSOA');
 
 --
 -- Restrições para as tabelas dumpadas
