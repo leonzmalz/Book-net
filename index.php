@@ -67,7 +67,7 @@ require_once("control/carregarGeneros.php");
               }else{
 
             ?>
-
+             <li><a href="view/logado.php">Painel de Controle</a></li>
              <li><a class="btn btn" href="control/execLogoff.php"> <?php echo Login::userLogado() ?> - Logoff</a></li>  
             <?php   
               }

@@ -7,7 +7,7 @@
 
   		public static function InsereValores($obj){
 		    $pdo = parent::getDB();
-        $insert = $pdo->prepare("INSERT INTO livro(nome,idGenero,permiteAluguel,foto,ISBN,editora,autor,nacionalidade) values (?,?,?,?,?,?,?,?)");
+        $insert = $pdo->prepare("INSERT INTO livros(nome,idGenero,permiteAluguel,foto,ISBN,editora,autor,nacionalidade) values (?,?,?,?,?,?,?,?)");
         $insert->bindValue(1, $obj->getNome());
         $insert->bindValue(2, $obj->getGenero()->getId());
         $insert->bindValue(3, $obj->getPermiteAluguel());
@@ -24,7 +24,7 @@
   		}
   		public static function AtualizaValores($obj){
         $pdo = parent::getDB();
-        $update = $pdo->prepare("UPDATE livro set nome = ?, idGenero = ?, permiteAluguel = ?, foto = ?, ISBN = ?, editora =?, editora = ?, autor = ?, nacionalidade = ? WHERE idLivro = ?");
+        $update = $pdo->prepare("UPDATE livros set nome = ?, idGenero = ?, permiteAluguel = ?, foto = ?, ISBN = ?, editora =?, editora = ?, autor = ?, nacionalidade = ? WHERE idLivro = ?");
         $update->bindValue(1, $obj->getNome());
         $update->bindValue(2, $obj->getGenero()->getId());
         $update->bindValue(3, $obj->getPermiteAluguel());
@@ -43,7 +43,7 @@
 
   		public static function ExcluiValores($obj){
         $pdo = parent::getDB();
-        $delete = $pdo->prepare("DELETE FROM livro WHERE idLivro = ?");
+        $delete = $pdo->prepare("DELETE FROM livros WHERE idLivro = ?");
         $delete->bindValue(1,$obj->getId());
         if($delete->execute())
           return true;
@@ -55,13 +55,14 @@
   		public static function getLivros(){
 
   			$pdo = parent::getDB();
-  			$select = $pdo->query("SELECT * FROM livro ORDER BY nome");
+  			$select = $pdo->query("SELECT * FROM livros ORDER BY nome");
   			$arrayResult = array();
 
   			foreach ($select as $registro){
   				$livro = new Livro;
           $livro->setId($registro['idLivro']);
-          $livro->getGenero->setIdGenero($registro['idGenero']);
+          $genero = $livro->getGenero();
+          $genero->setId($registro['idGenero']);
           $livro->setNome($registro['nome']);
           $livro->setPermiteAluguel($registro['permiteAluguel']);
           $livro->setFoto($registro['foto']);
@@ -78,7 +79,7 @@
 
       public static function getLivroById($id){
         $pdo = parent::getDB();
-        $select = $pdo->prepare("SELECT * FROM livro WHERE idLivro = ?");
+        $select = $pdo->prepare("SELECT * FROM livros WHERE idLivro = ?");
         $select->bindValue(1,$id);
         $select->execute();
 
@@ -100,7 +101,7 @@
 
       public static function getLivroByNome($nome){
         $pdo = parent::getDB();
-        $select = $pdo->prepare("SELECT * FROM livro WHERE nome LIKE ?  ORDER BY nome");
+        $select = $pdo->prepare("SELECT * FROM livros WHERE nome LIKE ?  ORDER BY nome");
         $select->bindValue(1,'%'.$nome.'%');
         $select->execute();
         $arrayResult = array();
@@ -124,7 +125,7 @@
 
       public static function getLivroByGenero($idGenero){
         $pdo = parent::getDB();
-        $select = $pdo->prepare("SELECT * FROM livro WHERE idGenero = ?");
+        $select = $pdo->prepare("SELECT * FROM livros WHERE idGenero = ?");
         $select->bindValue(1,$idGenero);
         $select->execute();
         

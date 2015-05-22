@@ -3,8 +3,9 @@
 
 	function exibirLivros(){
 		$livros = LivroDAO::getLivros();
-		foreach($livors as $registro){
+		foreach($livros as $registro){
             echo "<option value ='".$registro->getId()."''>".$registro->getNome()."</option>";
         }	
 	}
+
 ?>

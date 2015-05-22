@@ -51,7 +51,7 @@
 			return $this->nome;
 		}
 		public function getGenero(){
-			return $this->genero;
+			return $this->Genero;
 		}
 		public function getPermiteAluguel(){
 			return $this->permiteAluguel;

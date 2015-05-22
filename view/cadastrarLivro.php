@@ -3,11 +3,28 @@
 	  require_once("../control/carregarLivros.php");
       if(Login::isLogado()){
         if(Login::tipoUserLogado() == "ADMIN"){
-
+        	if(isset($_SESSION['execLivro'])){ 
+        		if($_SESSION['execLivro'] == true){
 ?>
+        <div class="alert alert-success alert-dismissible alertas" role="alert">
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <strong>Transação realizada</strong>
+        </div>
+    <?php
+			    }else{
+	?>
+		<div class="alert alert-danger alert-dismissible alertas" role="alert">
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <strong>Erro ao realizar transação</strong>
+        </div>
+	<?php		}
+     		
+        unset($_SESSION['execLivro']);
+        }
+    ?>    
 	<main  class="container">
       <div class="col-md-6">
-        <form class="form-vertical" action="../control/execProduto.php" method="post" role="CadastroDeLivros" name="formGenero" id="formGenero">
+        <form class="form-vertical" action="../control/execLivro.php" method="post" role="CadastroDeLivros" name="formGenero" id="formGenero">
         <legend>Novo Livro</legend>
         <div class="col-md-2 form-group">
           <label for="txtId">Id</label>
@@ -31,11 +48,11 @@
 			<label for="selectGeneros">Permite Aluguel</label>
 			<div class="radio">
 		  <label>
-		    <input type="radio" name="radioPermiteAluguel" id="radioPermiteAluguel" value="S">
+		    <input type="radio" name="rPermiteAluguel" id="rPermiteAluguel" value="S">
 		     Sim
 		  </label>
 		  <label>
-		    <input type="radio" name="radioNaoPermiteAluguel" id="radioNaoPermiteAluguel" value="N" checked>
+		    <input type="radio" name="rPermiteAluguel" id="rPermiteAluguel" value="N" checked>
 		     Não
 		  </label>
 		</div>
@@ -53,8 +70,8 @@
           <input type="text" id="txtEditora" name="txtEditora" class="form-control"> 
         </div>
 		<div class="col-md-12">
-              <label for="imgProduto">Foto</label>
-              <input type="file" id="imgProduto" name="imgProduto">
+              <label for="imgFoto">Foto</label>
+              <input type="file" id="imgFoto" name="imgFoto">
         </div>
         <input type="hidden" id="tipoOperacao" name="tipoOperacao" value="I">
 		
@@ -67,8 +84,8 @@
       </div>
       <div class="col-md-5 col-md-offset-1">
         <legend>Lista de Livros</legend>
-        <select size="21" id="selectLivros" name="selectLivros" class="form-control">
-         
+        <select size="20" id="selectLivros" name="selectLivros" class="form-control">
+         <?php exibirLivros(); ?>
          </select>
          <br>
             <button id="btnNovo"    name = "btnNovo" class="btn btn-success" >Novo</button>

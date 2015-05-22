@@ -31,7 +31,7 @@
       ?> <p class="alert alert-danger alertas">Não há usuário logado</p> <?php
    }
    
-
+   
    
    include("../view/rodape.php");
    
