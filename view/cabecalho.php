@@ -78,4 +78,24 @@ require_once("../control/carregarGeneros.php");
         </div>
       </div>
     </nav>
+<?php 
+    #Aqui faço o controle das mensagens de confirmação   
+    if(isset($_SESSION['msg'])){ 
+      if($_SESSION['msg'] == true){
+?>
+    <div class="alert alert-success alert-dismissible alertas" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Transação realizada</strong>
+    </div>
+  <?php
+      }else{
+  ?>
+    <div class="alert alert-danger alert-dismissible alertas" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Erro ao realizar transação</strong>
+    </div>
+  <?php   }
+      unset($_SESSION['msg']);
+      }
+  ?>        
 

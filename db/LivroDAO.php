@@ -24,7 +24,7 @@
   		}
   		public static function AtualizaValores($obj){
         $pdo = parent::getDB();
-        $update = $pdo->prepare("UPDATE livros set nome = ?, idGenero = ?, permiteAluguel = ?, foto = ?, ISBN = ?, editora =?, editora = ?, autor = ?, nacionalidade = ? WHERE idLivro = ?");
+        $update = $pdo->prepare("UPDATE livros set nome = ?, idGenero = ?, permiteAluguel = ?, foto = ?, ISBN = ?, editora =?, autor = ?, nacionalidade = ? WHERE idLivro = ?");
         $update->bindValue(1, $obj->getNome());
         $update->bindValue(2, $obj->getGenero()->getId());
         $update->bindValue(3, $obj->getPermiteAluguel());
@@ -87,7 +87,8 @@
           
         $livro = new Livro;
         $livro->setId($id);
-        $livro->getGenero->setIdGenero($registro['idGenero']);
+        $genero = $livro->getGenero();
+        $genero->setId($registro['idGenero']);
         $livro->setNome($registro['nome']);
         $livro->setPermiteAluguel($registro['permiteAluguel']);
         $livro->setFoto($registro['foto']);

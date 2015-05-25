@@ -16,17 +16,13 @@
       $Genero->setId($id);
 
       if($tipoOperacao == 'I')
-           $retorno = GeneroDAO::InsereValores($Genero); 
+         $_SESSION['msg'] = GeneroDAO::InsereValores($Genero); 
       else if ($tipoOperacao == 'A')
-           $retorno = GeneroDAO::AtualizaValores($Genero);
+         $_SESSION['msg'] = GeneroDAO::AtualizaValores($Genero);
       else if($tipoOperacao == 'E')
-         $retorno = GeneroDAO::ExcluiValores($Genero);
+         $_SESSION['msg'] = GeneroDAO::ExcluiValores($Genero);
+      header("Location:../view/cadastrarGenero.php");
 
-      if($retorno){
-         ?> <p class="alert alert-success alertas">Operação Realizada</p> <?php
-      }else{
-         ?> <p class="alert alert-danger alertas">Erro, não foi possível realizar a operação</p> <?php
-      }
    }else{
       ?> <p class="alert alert-danger alertas">Não há usuário logado</p> <?php
    }

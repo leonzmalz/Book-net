@@ -3,8 +3,7 @@
       require_once("../control/carregarGeneros.php"); 
       if(Login::isLogado()){
         if(Login::tipoUserLogado() == "ADMIN"){
-
-
+          
 ?>
     <main  class="container">
       <div class="col-md-6">
