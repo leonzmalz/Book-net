@@ -9,9 +9,7 @@
       $id            = $_POST['txtId'];
       $tipoOperacao  = $_POST['tipoOperacao'];   //I - incluir || A - alterar || E - excluir
 
-
       $Genero = new Genero;
-      
       $Genero->setNome($nome);
       $Genero->setId($id);
 
@@ -21,13 +19,12 @@
          $_SESSION['msg'] = GeneroDAO::AtualizaValores($Genero);
       else if($tipoOperacao == 'E')
          $_SESSION['msg'] = GeneroDAO::ExcluiValores($Genero);
+
       header("Location:../view/cadastrarGenero.php");
 
    }else{
       ?> <p class="alert alert-danger alertas">Não há usuário logado</p> <?php
    }
-   
-   
    
    include("../view/rodape.php");
    

@@ -6,27 +6,26 @@
           
 ?>
     <main  class="container">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <form class="form-vertical" action="../control/execGenero.php" method="post" role="CadastroDeGeneros" name="formGenero" id="formGenero">
         <legend>Novo Gênero</legend>
-        <div class="col-md-3 form-group">
+        <div class="col-md-2 form-group">
           <label for="txtId">Id</label>
           <input type="text" id="txtId" name="txtId" class="form-control" disabled> 
-        
         </div>
-        <div class="col-md-10 form-group">
+        <div class="col-md-11 form-group">
           <label for="txtNome">Nome</label>
           <input type="text" id="txtNome" name="txtNome" class="form-control" required> 
         </div>
         <input type="hidden" id="tipoOperacao" name="tipoOperacao" value="I">
 
-        <div class="col-md-5">
+        <div class="col-md-12">
           <input type="submit" value="Cadastrar" class="btn btn-success" id="btnOk" name="btnOk">
           <input type="reset" value="Cancelar" class="btn btn-danger">
         </div>
       </form>
       </div>
-      <div class="col-md-5 col-md-offset-1">
+      <div class="col-md-5 col-md-offset-2">
         <legend>Lista de Gêneros</legend>
         <select size="15" id="selectGeneros" name="selectGeneros" class="form-control">
           <?php exibirGeneros(); ?>

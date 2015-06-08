@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Mai 15, 2015 as 10:19 PM
+-- Tempo de Geração: Mai 29, 2015 as 12:44 PM
 -- Versão do Servidor: 5.5.8
 -- Versão do PHP: 5.3.5
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `generos` (
   `idGenero` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`idGenero`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Extraindo dados da tabela `generos`
@@ -60,7 +60,8 @@ INSERT INTO `generos` (`idGenero`, `nome`) VALUES
 (15, 'Aventura'),
 (22, 'Auto-ajuda'),
 (23, 'Culinária'),
-(24, 'Leo');
+(25, 'Informática'),
+(26, 'Contos');
 
 -- --------------------------------------------------------
 
@@ -71,7 +72,7 @@ INSERT INTO `generos` (`idGenero`, `nome`) VALUES
 CREATE TABLE IF NOT EXISTS `livros` (
   `idLivro` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
-  `idCategoria` int(11) NOT NULL,
+  `idGenero` int(11) NOT NULL,
   `permiteAluguel` varchar(45) DEFAULT NULL,
   `foto` varchar(200) DEFAULT NULL,
   `ISBN` varchar(45) DEFAULT NULL,
@@ -79,13 +80,23 @@ CREATE TABLE IF NOT EXISTS `livros` (
   `autor` varchar(100) DEFAULT NULL,
   `nacionalidade` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idLivro`),
-  KEY `fk_Livro_Categoria1_idx` (`idCategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `fk_Livro_Genero_idx` (`idGenero`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=57 ;
 
 --
 -- Extraindo dados da tabela `livros`
 --
 
+INSERT INTO `livros` (`idLivro`, `nome`, `idGenero`, `permiteAluguel`, `foto`, `ISBN`, `editora`, `autor`, `nacionalidade`) VALUES
+(45, 'Dominando o Android', 25, 'S', 'livro1.png', '9999999', 'Novatec', 'Joaquim José da Silva Xavier', 'Nacional'),
+(47, 'Quebre a cabeça! Padrões de Projeto', 25, 'S', 'livro2.jpg', '123131', 'Desconhecida', 'Alguem', 'Internacional'),
+(48, 'Pai Rico Pai Pobre', 22, 'S', 'livro7.png', '98918231', 'Campus', 'Robert T. KyrsoSak', 'Nacional'),
+(51, 'Pizza do Faustão', 23, 'S', 'livro3.jpg', '988123131', 'Globo', 'Faustão', 'Nacional'),
+(52, 'O fascinante império de steve jobs', 15, 'N', 'livro4.jpg', '8989898', 'Desconhecida', 'Michael Mortiz', 'Internacional'),
+(53, 'A música do silêncio', 26, 'N', 'livro5.jpg', '8718726318', 'Arqueiro', 'Patrick Rothfuss', 'Nacional'),
+(54, 'Percy Jackson e o ladrão de raios', 15, 'S', 'livro6.jpg', '89898989', 'Desconhecida', 'Rick Riordan', 'Internacional'),
+(55, 'As crônicas de gelo e fogo: A guerra dos tronos', 15, 'N', 'livro8.png', '989898', 'Leya', 'Geroge R. R. Martin', 'Internacional'),
+(56, 'Dicionário Jurídico', 22, 'N', 'livro9.png', '9898989', 'Cronus', 'Thais Hae', 'Nacional');
 
 -- --------------------------------------------------------
 
@@ -219,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `senha` varchar(60) NOT NULL,
   `tipo` varchar(10) NOT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
@@ -227,7 +238,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`idUsuario`, `user`, `senha`, `tipo`) VALUES
 (1, 'leo', '$2a$08$NDc3MTU3NjA1NTU1NWYwYu0Wrko30qj8gG06msw6tvHk7L8Ut.Hwe', 'ADMIN'),
-(2, 'teste', '$2a$08$MzYwNDEyODIxNTU1NjEwYOUC4oTEcOeQ8JmT1/vRG3hfOmbPT6hDi', 'PESSOA');
+(2, 'teste', '$2a$08$MzYwNDEyODIxNTU1NjEwYOUC4oTEcOeQ8JmT1/vRG3hfOmbPT6hDi', 'PESSOA'),
+(3, 'admin', '$2a$08$MjI5NzU1NDU1NWRjM2I3NeLaaXJaK8NS5T4h6OsBU.If2aDArqz7G', 'ADMIN');
 
 --
 -- Restrições para as tabelas dumpadas
@@ -243,7 +255,7 @@ ALTER TABLE `aluguel`
 -- Restrições para a tabela `livros`
 --
 ALTER TABLE `livros`
-  ADD CONSTRAINT `fk_Livro_Categoria1` FOREIGN KEY (`idCategoria`) REFERENCES `generos` (`idGenero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Livro_Genero` FOREIGN KEY (`idGenero`) REFERENCES `generos` (`idGenero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Restrições para a tabela `livros_valores`

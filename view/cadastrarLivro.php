@@ -18,13 +18,13 @@
           <label for="txtNome">Nome</label>
           <input type="text" id="txtNome" name="txtNome" class="form-control" required> 
         </div>
-		<div class="col-md-4 form-group">
+		<div class="col-md-3 form-group">
 		  <label for="selectGeneros">Gênero</label>
 		  <select  id="selectGeneros" name="selectGeneros" class="form-control">
                 <?php exibirGeneros(); ?>
           </select>
 		</div>
-		<div class=" col-md-3 form-group">
+		<div class=" col-md-4 form-group">
           <label for="txtISBN">ISBN</label>
           <input type="text" id="txtISBN" name="txtISBN" class="form-control"> 
         </div>
@@ -106,7 +106,6 @@ include("rodape.php"); ?>
    	    });
 
 		$('#btnAlterar').click(function(){
-			//Reativo todos os campos para permitir a edição
 		    DisabledCampos(false); //Passo como nulo para ativar os campos
 		    $('#btnOk').val('Alterar');    
 		    $('#txtNome').focus();
