@@ -23,22 +23,8 @@ require_once("control/carregarGeneros.php");
         <div class="navbar-header">
             <a class="navbar-brand " href="#">Book.Net</a> 
         </div>
-        <div class="collapse navbar-collapse">
-          <form class="navbar-form navbar-left " role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Buscar Livro" id="inputBusca">
-            </div>
-            </form>
-          <ul class="nav navbar-nav navbar-left">
-            <li class="dropdown">
-              <button class="btn btn-danger dropdown-toggle botao-nav" data-toggle="dropdown">Categorias<span class="caret" role="button" aria-expanded="false"></span></button>
-                <ul class="dropdown-menu" role="menu">
-                    <?php exibirGenerosLista(); ?>
-               </ul>
-              </li>
-          </ul>
-           
-          <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://localhost:8080/BookNet/livros/buscarLivros.xhtml">Buscar Livro</a></li>
           <?php
                if (!Login::isLogado()) { 
 

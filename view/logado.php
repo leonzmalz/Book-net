@@ -24,6 +24,7 @@
 	   		if(Login::tipoUserLogado() == "ADMIN"){ #Opções de administrador
 		 		echo "<a href='cadastrarGenero.php' class='btn btn-danger'>Cadastrar Gênero</a>";
 		 		echo "<a href='cadastrarLivro.php' class='btn btn-warning'>Cadastrar Livro</a>";
+		 		echo "<a href='http://localhost:8080/BookNet/livros/cadastrarPrecos.xhtml' class='btn btn-success'>Inserir Valores aos livros</a>";
 	 		}
 	 		else{ #Opções de cliente
 	 			echo "<a href='veriricarPedidos.php' class='btn btn-danger'>Verificar Pedidos</a>";

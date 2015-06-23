@@ -17,6 +17,8 @@ class Login extends Conexao {
                 $_SESSION['user'] = $usuarioBD->getUser();
                 $_SESSION['logado'] = true;
                 $_SESSION['tipo_usuario'] = $usuarioBD->getTipo();
+                //Defino cookies que serão usados no jsf
+                setcookie("user",$_SESSION['id_usuario'],time() + 5000,"/","localhost");
                 return true;
             } else {
                 $_SESSION['erro_login'] = 'Senha incorreta';
@@ -48,6 +50,7 @@ class Login extends Conexao {
     public static function deslogar() {
         if (isset($_SESSION['logado'])) {
             unset($_SESSION['logado']);
+            setcookie("user","","/","localhost");
             session_destroy();
         }
     }
